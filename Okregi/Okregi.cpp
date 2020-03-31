@@ -7,6 +7,8 @@
 #include "Okrag.h"
 #include <time.h>
 
+
+
 #define SIZE 10
 #define PRECISION 0.00001
 
