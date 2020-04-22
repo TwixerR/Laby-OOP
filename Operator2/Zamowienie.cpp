@@ -74,7 +74,12 @@ Zamowienie& Zamowienie::operator-=(Produkt& prod)
 
 Zamowienie& Zamowienie::operator--()
 {
-	this->produkty[--produkty_count] = Produkt();
+	for (int i = 0; i < this->produkty_count-1; i++)
+	{
+		produkty[i] = produkty[i + 1];
+	}
+	this->produkty[produkty_count-1] = Produkt();
+	--produkty_count;
 	return *this;
 }
 
