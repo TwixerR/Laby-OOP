@@ -1,24 +1,20 @@
 #include "Produkt.h"
-#include <time.h>
 #include <iostream>
 
-Produkt::Produkt()
+Produkt::Produkt() : nazwa(""), cena(0.0)
 {
-	srand(time(NULL));
-	this->cena = (rand() % 100000) / 100.0;
-	char nam [10];
-	for (int i = 10 - 1; i >= 0; i--)
-	{
-		nam[i] = rand() % ('z' - 'a' - 1) + 'a';
-	}
-	nam[9] = '\0';
-	this->nazwa = std::string(nam);
 }
 
 Produkt::Produkt(Produkt& obj)
 {
 	this->cena = obj.cena;
 	this->nazwa = obj.nazwa;
+}
+
+Produkt::Produkt(std::string anzwa, double cena)
+{
+	this->nazwa = anzwa;
+	this->cena = cena;
 }
 
 Produkt::~Produkt()
@@ -28,4 +24,25 @@ Produkt::~Produkt()
 void Produkt::printInfo()
 {
 	std::cout << "\tNazwa prod.: " << this->nazwa << ", cena: " << this->cena << "\n";
+}
+
+bool Produkt::operator==(Produkt& prod)
+{
+	return (this->cena == prod.cena && this->nazwa == prod.nazwa);
+}
+
+bool Produkt::operator==(void* ptr)
+{
+	return this == nullptr;
+}
+
+bool Produkt::operator!=(Produkt& prod)
+{
+	return !(this->cena == prod.cena && this->nazwa == prod.nazwa);
+}
+
+bool Produkt::isempty()
+{
+	Produkt a;
+	return (this->cena == a.cena && this->nazwa == a.nazwa);
 }

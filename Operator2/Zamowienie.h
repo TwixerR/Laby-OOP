@@ -10,9 +10,19 @@ class Zamowienie
 	unsigned int  produkty_count;
 	unsigned int getNextId();
 public:
+	//construction site
 	Zamowienie();
+	Zamowienie(Zamowienie& zam);
 	~Zamowienie();
-	void printProdukty();
+	//operators
 	Zamowienie& operator+=(Produkt& prod);
+	Zamowienie& operator-=(Produkt& prod);
+	Zamowienie& operator--();
+	Zamowienie operator--(int ignore);	
+	bool operator==(Zamowienie& zam);
+	bool operator!=(Zamowienie& zam);
+	//fluff
+	void printProdukty();
+	void printVerbose();
 };
 
